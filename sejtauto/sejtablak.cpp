@@ -1,9 +1,9 @@
 // sejtablak.cpp
 //
-// …letj·tÈk rajzolÛ
-// ProgramozÛ P·ternoszter
+// √âletj√°t√©k rajzol√≥
+// Programoz√≥ P√°ternoszter
 //
-// Copyright (C) 2011, B·tfai Norbert, nbatfai@inf.unideb.hu, nbatfai@gmail.com
+// Copyright (C) 2011, B√°tfai Norbert, nbatfai@inf.unideb.hu, nbatfai@gmail.com
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,30 +18,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
-// Ez a program szabad szoftver; terjeszthetı illetve mÛdosÌthatÛ a
-// Free Software Foundation ·ltal kiadott GNU General Public License
-// dokumentum·ban leÌrtak; ak·r a licenc 3-as, ak·r (tetszıleges) kÈsıbbi
-// v·ltozata szerint.
+// Ez a program szabad szoftver; terjeszthet≈ë illetve m√≥dos√≠that√≥ a
+// Free Software Foundation √°ltal kiadott GNU General Public License
+// dokumentum√°ban le√≠rtak; ak√°r a licenc 3-as, ak√°r (tetsz≈ëleges) k√©s≈ëbbi
+// v√°ltozata szerint.
 //
-// Ez a program abban a remÈnyben ker¸l kˆzread·sra, hogy hasznos lesz,
-// de minden egyÈb GARANCIA N…LK‹L, az ELADHAT”S¡GRA vagy VALAMELY C…LRA
-// VAL” ALKALMAZHAT”S¡GRA valÛ sz·rmaztatott garanci·t is beleÈrtve.
-// Tov·bbi rÈszleteket a GNU General Public License tartalmaz.
+// Ez a program abban a rem√©nyben ker√ºl k√∂zread√°sra, hogy hasznos lesz,
+// de minden egy√©b GARANCIA N√âLK√úL, az ELADHAT√ìS√ÅGRA vagy VALAMELY C√âLRA
+// VAL√ì ALKALMAZHAT√ìS√ÅGRA val√≥ sz√°rmaztatott garanci√°t is bele√©rtve.
+// Tov√°bbi r√©szleteket a GNU General Public License tartalmaz.
 //
-// A felhaszn·lÛnak a programmal egy¸tt meg kell kapnia a GNU General
-// Public License egy pÈld·ny·t; ha mÈgsem kapta meg, akkor
+// A felhaszn√°l√≥nak a programmal egy√ºtt meg kell kapnia a GNU General
+// Public License egy p√©ld√°ny√°t; ha m√©gsem kapta meg, akkor
 // tekintse meg a <http://www.gnu.org/licenses/> oldalon.
 //
 //
 // Version history:
 //
-// 0.0.1    A kÈt oszt·ly tervezÈsÈnek fı szempontja az volt, hogy
-// ne vagy alig k¸lˆnbˆzzˆn az elsı C++-os pÈld·tÛl, a MandelostÛl:
+// 0.0.1    A k√©t oszt√°ly tervez√©s√©nek f≈ë szempontja az volt, hogy
+// ne vagy alig k√ºl√∂nb√∂zz√∂n az els≈ë C++-os p√©ld√°t√≥l, a Mandelost√≥l:
 // http://progpater.blog.hu/2011/02/26/tan_csodallak_amde_nem_ertelek_de_kepzetem_hegyvolgyedet_bejarja
-// ezÈrt az olyan kÈnyesebb dolgokkal, hogy kezelj¸k a racsIndex-et a
-// kÈt oszt·lyra bontott C++ megold·sban, amikor Ìrjuk ·t a Jav·sbÛl, nem foglalkoztunk
-// a kiindulÛ Jav·s: http://www.tankonyvtar.hu/informatika/javat-tanitok-1-2-080904-1
-// (a baz·r eszme: ÑRelease Early, Release Often" Ìrjuk ki a posztra)
+// ez√©rt az olyan k√©nyesebb dolgokkal, hogy kezelj√ºk a racsIndex-et a
+// k√©t oszt√°lyra bontott C++ megold√°sban, amikor √≠rjuk √°t a Jav√°sb√≥l, nem foglalkoztunk
+// a kiindul√≥ Jav√°s: http://www.tankonyvtar.hu/informatika/javat-tanitok-1-2-080904-1
+// (a baz√°r eszme: ‚ÄûRelease Early, Release Often" √≠rjuk ki a posztra)
 //
 
 #include "sejtablak.h"
@@ -49,7 +49,7 @@
 SejtAblak::SejtAblak(int szelesseg, int magassag, QWidget *parent)
 : QMainWindow(parent)
 {
-  setWindowTitle("A John Horton Conway-fÈle Èletj·tÈk");
+  setWindowTitle("A John Horton Conway-f√©le √©letj√°t√©k");
   
   this->magassag = magassag;
   this->szelesseg = szelesseg;
@@ -71,11 +71,11 @@ SejtAblak::SejtAblak(int szelesseg, int magassag, QWidget *parent)
   racsIndex = 0;
   racs = racsok[racsIndex];
 
-  // A kiindulÛ racs minden cell·ja HALOTT
+  // A kiindul√≥ racs minden cell√°ja HALOTT
   for(int i=0; i<magassag; ++i)
     for(int j=0; j<szelesseg; ++j)
       racs[i][j] = HALOTT;
-    // A kiindulÛ racsra "ELOlÈnyeket" helyez¸nk
+    // A kiindul√≥ racsra "ELOl√©nyeket" helyez√ºnk
     //siklo(racs, 2, 2);
 
     sikloKilovo(racs, 5, 60);
@@ -89,12 +89,12 @@ SejtAblak::SejtAblak(int szelesseg, int magassag, QWidget *parent)
 void SejtAblak::paintEvent(QPaintEvent*) {
   QPainter qpainter(this);
   
-  // Az aktu·lis
+  // Az aktu√°lis
   bool **racs = racsok[racsIndex];
   // racsot rajzoljuk ki:
-  for(int i=0; i<magassag; ++i) { // vÈgig lÈpked a sorokon
+  for(int i=0; i<magassag; ++i) { // v√©gig l√©pked a sorokon
     for(int j=0; j<szelesseg; ++j) { // s az oszlopok
-      // Sejt cella kirajzol·sa
+      // Sejt cella kirajzol√°sa
       if(racs[i][j] == ELO)
 	qpainter.fillRect(j*cellaSzelesseg, i*cellaMagassag,
 			  cellaSzelesseg, cellaMagassag, Qt::black);
@@ -135,15 +135,15 @@ void SejtAblak::vissza(int racsIndex)
 }
 
 /**
- * A sejttÈrbe "ELOlÈnyeket" helyez¸nk, ez a "siklÛ".
- * Adott ir·nyban halad, m·solja mag·t a sejttÈrben.
- * Az ELOlÈny ismertetÈsÈt l·sd pÈld·ul a
- * [MATEK J¡T…K] hivatkoz·sban (Cs·k·ny BÈla: DiszkrÈt
- * matematikai j·tÈkok. Polygon, Szeged 1998. 172. oldal.)
+ * A sejtt√©rbe "ELOl√©nyeket" helyez√ºnk, ez a "sikl√≥".
+ * Adott ir√°nyban halad, m√°solja mag√°t a sejtt√©rben.
+ * Az ELOl√©ny ismertet√©s√©t l√°sd p√©ld√°ul a
+ * [MATEK J√ÅT√âK] hivatkoz√°sban (Cs√°k√°ny B√©la: Diszkr√©t
+ * matematikai j√°t√©kok. Polygon, Szeged 1998. 172. oldal.)
  *
- * @param   racs    a sejttÈr ahov· ezt az ·llatk·t helyezz¸k
- * @param   x       a befoglalÛ tÈgla bal felsı sark·nak oszlopa
- * @param   y       a befoglalÛ tÈgla bal felsı sark·nak sora
+ * @param   racs    a sejtt√©r ahov√° ezt az √°llatk√°t helyezz√ºk
+ * @param   x       a befoglal√≥ t√©gla bal fels≈ë sark√°nak oszlopa
+ * @param   y       a befoglal√≥ t√©gla bal fels≈ë sark√°nak sora
  */
 void SejtAblak::siklo(bool **racs, int x, int y) {
   
@@ -155,20 +155,20 @@ void SejtAblak::siklo(bool **racs, int x, int y) {
   
 }
 /**
- * A sejttÈrbe "ELOlÈnyeket" helyez¸nk, ez a "siklÛ ·gy˙".
- * Adott ir·nyban siklÛkat lı ki.
- * Az ELOlÈny ismertetÈsÈt l·sd pÈld·ul a
- * [MATEK J¡T…K] hivatkoz·sban /Cs·k·ny BÈla: DiszkrÈt
- * matematikai j·tÈkok. Polygon, Szeged 1998. 173. oldal./,
- * de itt az ·bra hib·s, egy oszloppal told mÈg balra a
- * bal oldali 4 sejtes nÈgyzetet. A helyes ·gy˙ rajz·t
- * l·sd pl. az […LET CIKK] hivatkoz·sban /Robert T.
- * Wainwright: Life is Universal./ (MegemlÌthetj¸k, hogy
- * mindkettı tartalmaz kÈt felesleges sejtet is.)
+ * A sejtt√©rbe "ELOl√©nyeket" helyez√ºnk, ez a "sikl√≥ √°gy√∫".
+ * Adott ir√°nyban sikl√≥kat l≈ë ki.
+ * Az ELOl√©ny ismertet√©s√©t l√°sd p√©ld√°ul a
+ * [MATEK J√ÅT√âK] hivatkoz√°sban /Cs√°k√°ny B√©la: Diszkr√©t
+ * matematikai j√°t√©kok. Polygon, Szeged 1998. 173. oldal./,
+ * de itt az √°bra hib√°s, egy oszloppal told m√©g balra a
+ * bal oldali 4 sejtes n√©gyzetet. A helyes √°gy√∫ rajz√°t
+ * l√°sd pl. az [√âLET CIKK] hivatkoz√°sban /Robert T.
+ * Wainwright: Life is Universal./ (Megeml√≠thetj√ºk, hogy
+ * mindkett≈ë tartalmaz k√©t felesleges sejtet is.)
  *
- * @param   racs    a sejttÈr ahov· ezt az ·llatk·t helyezz¸k
- * @param   x       a befoglalÛ tÈgla bal felsı sark·nak oszlopa
- * @param   y       a befoglalÛ tÈgla bal felsı sark·nak sora
+ * @param   racs    a sejtt√©r ahov√° ezt az √°llatk√°t helyezz√ºk
+ * @param   x       a befoglal√≥ t√©gla bal fels≈ë sark√°nak oszlopa
+ * @param   y       a befoglal√≥ t√©gla bal fels≈ë sark√°nak sora
  */
 void SejtAblak::sikloKilovo(bool **racs, int x, int y) {
   
